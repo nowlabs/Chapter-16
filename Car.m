@@ -22,13 +22,22 @@
 	return self;
 }
 
-@synthesize name = appellation;
+@synthesize name;
 @synthesize engine;
+@synthesize make;
+@synthesize model;
+@synthesize modelYear;
+@synthesize numberOfDoors;
+@synthesize mileage;
 
 -(id)copyWithZone:(NSZone *)zone {
 	Car *carCopy;
 	carCopy = [[[self class] allocWithZone:zone] init];
 	carCopy.name = self.name;
+	carCopy.make = self.make;
+	carCopy.model = self.model;
+	carCopy.numberOfDoors = self.numberOfDoors;
+	carCopy.mileage = self.mileage;
 	
 	Engine *engineCopy = [[engine copy] autorelease];
 	carCopy.engine = engineCopy;
@@ -62,8 +71,19 @@
 	}
 } //print
 
+- (NSString *)description {
+	NSString *desc;
+	desc = [NSString stringWithFormat:
+			@"%@, a %d %@ %@, has %d doors, %.1f miles and %d tires.",
+			name, modelYear, make, model, numberOfDoors, mileage,
+			[tires count]];
+	return desc;
+} //description
+
 - (void)dealloc {
 	self.name = nil;
+	self.make = nil;
+	self.model = nil;
 	[tires release];
 	[engine release];
 	[super dealloc];
