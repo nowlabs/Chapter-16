@@ -4,46 +4,49 @@
 #import "Car.h"
 #import "Slant6.h"
 #import "AllWeatherRadial.h"
+#import "Garage.h"
+
+Car *makeCar(NSString *name, NSString *make, NSString *model,
+			 int modelYear, int numberOfDoors, float mileage,
+			 int horsepower) {
+	Car *car = [[[Car alloc] init] autorelease];
+	car.name = name;
+	car.make = make;
+	car.model = model;
+	car.numberOfDoors = numberOfDoors;
+	car.modelYear = modelYear;
+	car.mileage = mileage;
+	
+	Slant6 *engine = [[[Slant6 alloc] init] autorelease];
+	[engine setValue:[NSNumber numberWithInt:150]
+			  forKey:@"horsepower"];
+	car.engine = engine;
+	
+	int i;
+	for (i = 0; i < 4; i++) {
+		Tire *tire = [[[Tire alloc] init] autorelease];
+		[car setTire:tire atIndex:i];
+	}
+	
+	return car;
+} //makeCar
 
 int main (int argc, const char * argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	
-	Car *car = [[[Car alloc] init] autorelease];
-	car.name = @"Herbie";
-	car.make = @"Honda";
-	car.model = @"CRX";
-	car.numberOfDoors = 2;
-	car.modelYear = 1984;
-	car.mileage = 110000;
+	Garage *garage = [[Garage alloc] init];
+	garage.name = @"Joe's Garage";
 	
-	int i;
-	for (i = 0; i < 4; i++) {
-		AllWeatherRadial *tire;
-		tire = [[AllWeatherRadial alloc] init];
-		[car setTire:tire atIndex:i];
-		[tire release];
-	}
+	Car *car;
+	car = makeCar(@"Herbie", @"Honda", @"CRX", 
+				  1984, 2, 110000, 134);
+	[garage addCar:car];
+	car = makeCar(@"Badger", @"Acura", @"Integra", 
+				  1987, 5, 217324, 158);
+	[garage addCar:car];
 	
-	Slant6 *engine = [[[Slant6 alloc] init] autorelease];
-	car.engine = engine;
-	
-	NSLog(@"***************");
-	NSLog(@"Horsepower is %@",[engine valueForKey:@"horsepower"]);
-	[engine setValue:[NSNumber numberWithInt:150]
-			  forKey:@"horsepower"];
-	NSLog(@"Horsepower has changed to %@",
-		  [engine valueForKey:@"horsepower"]);
-	NSLog(@"***************");
-	[car setValue:[NSNumber numberWithInt:160] 
-	   forKeyPath:@"engine.horsepower"];
-	NSLog(@"Car's horsepower rating: %@",
-		  [car valueForKeyPath:@"engine.horsepower"]);
-	NSLog(@"***************");
-	NSArray *pressures = [car valueForKeyPath:@"tires.pressure"];
-	NSLog(@"Pressures %@", pressures);
-	NSLog(@"***************");
-	NSLog(@"Car is %@", car);
-	
+	[garage print];
+	[garage release];
     [pool drain];
     return 0;
 }

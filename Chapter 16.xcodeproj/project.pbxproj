@@ -15,6 +15,7 @@
 		E94C5B9F11AAD886007A5AC7 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C5B9911AAD886007A5AC7 /* Car.m */; };
 		E94C5BA011AAD886007A5AC7 /* Engine.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C5B9B11AAD886007A5AC7 /* Engine.m */; };
 		E94C5BA111AAD886007A5AC7 /* Slant6.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C5B9D11AAD886007A5AC7 /* Slant6.m */; };
+		E969584411AB161100B044FB /* Garage.m in Sources */ = {isa = PBXBuildFile; fileRef = E969584311AB161100B044FB /* Garage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,8 @@
 		E94C5B9B11AAD886007A5AC7 /* Engine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Engine.m; sourceTree = "<group>"; };
 		E94C5B9C11AAD886007A5AC7 /* Slant6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Slant6.h; sourceTree = "<group>"; };
 		E94C5B9D11AAD886007A5AC7 /* Slant6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Slant6.m; sourceTree = "<group>"; };
+		E969584211AB161100B044FB /* Garage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Garage.h; sourceTree = "<group>"; };
+		E969584311AB161100B044FB /* Garage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Garage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				E94C5B9411AAD856007A5AC7 /* Tire.m */,
 				32A70AAB03705E1F00C91783 /* Chapter 16_Prefix.pch */,
 				08FB7796FE84155DC02AAC07 /* Chapter 16.m */,
+				E969584211AB161100B044FB /* Garage.h */,
+				E969584311AB161100B044FB /* Garage.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				E94C5B9F11AAD886007A5AC7 /* Car.m in Sources */,
 				E94C5BA011AAD886007A5AC7 /* Engine.m in Sources */,
 				E94C5BA111AAD886007A5AC7 /* Slant6.m in Sources */,
+				E969584411AB161100B044FB /* Garage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
