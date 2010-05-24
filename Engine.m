@@ -11,8 +11,19 @@
 
 @implementation Engine
 
+- (id)init {
+	if (self = [super init]) {
+		horsepower = 145;
+	}
+	return self;
+}
+
 - (NSString *)description {
-	return @"I am an engine, vrrooom";
+	NSString *desc = [NSString stringWithFormat:
+					  @"I am an engine, horsepower rating: %d",
+					  horsepower];
+	return desc;
+	
 }
 
 - (id)copyWithZone:(NSZone *)zone {

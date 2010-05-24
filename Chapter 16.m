@@ -27,6 +27,21 @@ int main (int argc, const char * argv[]) {
 	Slant6 *engine = [[[Slant6 alloc] init] autorelease];
 	car.engine = engine;
 	
+	NSLog(@"***************");
+	NSLog(@"Horsepower is %@",[engine valueForKey:@"horsepower"]);
+	[engine setValue:[NSNumber numberWithInt:150]
+			  forKey:@"horsepower"];
+	NSLog(@"Horsepower has changed to %@",
+		  [engine valueForKey:@"horsepower"]);
+	NSLog(@"***************");
+	[car setValue:[NSNumber numberWithInt:160] 
+	   forKeyPath:@"engine.horsepower"];
+	NSLog(@"Car's horsepower rating: %@",
+		  [car valueForKeyPath:@"engine.horsepower"]);
+	NSLog(@"***************");
+	NSArray *pressures = [car valueForKeyPath:@"tires.pressure"];
+	NSLog(@"Pressures %@", pressures);
+	NSLog(@"***************");
 	NSLog(@"Car is %@", car);
 	
     [pool drain];
