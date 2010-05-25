@@ -80,6 +80,14 @@
 	return desc;
 } //description
 
+- (void) setNilValueForKey:(NSString *)key {
+	if ([key isEqualToString:@"mileage"]) {
+		mileage = 0;
+	} else {
+		[super setNilValueForKey:key];
+	}
+}
+
 - (void)dealloc {
 	self.name = nil;
 	self.make = nil;

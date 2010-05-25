@@ -20,6 +20,18 @@
 	[cars addObject:car];
 } //addCar
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+	if (stuff == nil) {
+		stuff = [[NSMutableDictionary alloc] init];
+	}
+	[stuff setValue:value forKey:key];
+}
+
+- (id)valueForUndefinedKey:(NSString *)key {
+	id value = [stuff valueForKey:key];
+	return value;
+}
+
 - (void)print {
 	NSLog(@"%@:", name);
 	for (Car *car in cars) {
@@ -30,6 +42,7 @@
 - (void)dealloc {
 	[name release];
 	[cars release];
+	[stuff dealloc];
 	[super dealloc];
 }
 

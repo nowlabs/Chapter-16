@@ -67,6 +67,32 @@ int main (int argc, const char * argv[]) {
 					 valueForKeyPath:@"cars.@distinctUnionOfObjects.make"];
 	NSLog(@"Makers: %@", manufacturers);
 	
+	car = [[garage valueForKeyPath:@"cars"] lastObject];
+	NSArray *keys = [NSArray arrayWithObjects:@"make", @"model",
+					 @"modelYear", nil];
+	NSDictionary *carValues = [car dictionaryWithValuesForKeys:keys];
+	NSLog(@"Car values: %@", carValues);
+	
+	NSDictionary *newValues =
+	[NSDictionary dictionaryWithObjectsAndKeys:
+	 @"Chevy", @"make", @"Nova", @"model",
+	 [NSNumber numberWithInt:1964], @"modelYear",
+	 nil];
+	[car setValuesForKeysWithDictionary:newValues];
+	NSLog(@"car with new values is %@", car);
+	NSLog(@"----------------");
+	[car setValue:nil forKey: @"mileage"];
+	NSLog(@"car with updated mileage is %@", car);
+	NSLog(@"----------------");
+	
+	[garage setValue:@"bunny" forKey:@"fluffy"];
+	[garage setValue:[NSNull null] forKey:@"bork"];
+	[garage setValue:nil forKey:@"gronk"];
+	NSLog(@"Values: %@, %@, %@",
+		  [garage valueForKey:@"fluffy"],
+		  [garage valueForKey:@"bork"],
+		  [garage valueForKey:@"nokey"]);
+	
 	[garage print];
 	[garage release];
     [pool drain];

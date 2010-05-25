@@ -13,6 +13,7 @@
 @interface Garage : NSObject {
 	NSString *name;
 	NSMutableArray *cars;
+	NSMutableDictionary *stuff;
 }
 
 @property(readwrite, copy) NSString *name;
