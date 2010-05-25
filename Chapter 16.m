@@ -45,6 +45,28 @@ int main (int argc, const char * argv[]) {
 				  1987, 5, 217324, 158);
 	[garage addCar:car];
 	
+	NSNumber *count;
+	count = [garage valueForKeyPath:@"cars.@count"];
+	NSLog(@"We have %@ cars", count);
+	
+	NSNumber *sum;
+	sum = [garage valueForKeyPath:@"cars.@sum.mileage"];
+	NSLog(@"We have a grand total of %@ miles", sum);
+	
+	NSNumber *avgMileage;
+	avgMileage = [garage valueForKeyPath:@"cars.@avg.mileage"];
+	NSLog(@"The average mileage is %.2f", [avgMileage floatValue]);
+	
+	NSNumber *max, *min;
+	max = [garage valueForKeyPath:@"cars.@max.mileage"];
+	min = [garage valueForKeyPath:@"cars.@min.mileage"];
+	NSLog(@"max/min: %@/%@", max, min);
+	
+	NSArray *manufacturers;
+	manufacturers = [garage 
+					 valueForKeyPath:@"cars.@distinctUnionOfObjects.make"];
+	NSLog(@"Makers: %@", manufacturers);
+	
 	[garage print];
 	[garage release];
     [pool drain];
